@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <title>Página de Eventos</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Eventos Culturales</h1>
+    </div>
+
+    <div class="header2">
+        <h2>Listado de Eventos</h2>
+    </div>
+
+    <div class="filter-container">
+        <label for="filter-date">Filtrar por fecha:</label>
+        <input type="date" id="filter-date">
+    </div>
+
+    <div class="container-list">
+        <table class="list" id="lista">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Lugar</th>
+                    <th>Descripción</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Espacio para los eventos-->
+            </tbody>
+        </table>
+        
+        <div class="pagination">
+            <div id="pagination-buttons"></div>
+            <div id="pagination-interactions">
+                <button id="prev-page"><</button>
+            <span id="page-info">Página</span>
+            <button id="next-page">></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-btn"><button id="add-event-btn" onclick="redireccionAdd()" class="btn-add">Añadir un evento</button></div>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

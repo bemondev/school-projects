@@ -1,0 +1,14 @@
+{
+    "lugares": [
+        {"name": "Colonia"},
+        {"name": "Rocha"},
+        {"name": "Punta del Este"},
+        {"name": "Salto"},
+        {"name": "Durazno"},
+        {"name": "Canelones"},
+        {"name": "Montevideo"},
+        {"name": "Artigas"},
+        {"name": "Piriapolis"},
+        {"name": "Florida"}
+    ]
+}

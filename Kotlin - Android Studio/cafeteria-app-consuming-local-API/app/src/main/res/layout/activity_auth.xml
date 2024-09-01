@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.AuthActivity"
+    android:background="@color/white">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:src="@mipmap/icon_xxxhdpi" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/inter_black"
+        android:gravity="center"
+        android:text="CAFÉ BRAUM"
+        android:textColor="@color/black"
+        android:textSize="40dp" />
+
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableStart="@drawable/baseline_person_24"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableStart="@drawable/baseline_lock_24"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
+        android:inputType="textPassword" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/round_btn_green"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Iniciar sesion"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnSingin"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_btn_gray"
+            android:backgroundTint="@color/gray"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Nuevo usuario? Registrate aquí"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="@color/transparent">
+
+    <!-- Layout para el buscador y botón de categorías -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/search_layout"
+        android:paddingTop="10dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:paddingBottom="5dp">
+
+        <EditText
+            android:id="@+id/txtSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/search"
+            android:hint="Busqueda..."
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
+
+        <Button
+            android:id="@+id/btn_categorias"
+            android:background="@drawable/round_btn_gray"
+            android:backgroundTint="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categorías ▼"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+    <!-- RecyclerView que ocupa el espacio restante -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_layout"
+        android:background="@color/white" />
+
+    <TextView
+        android:id="@+id/txtNoResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No se encontraron resultados"
+        android:textSize="18sp"
+        android:textColor="@color/gray"
+        android:drawableStart="@drawable/info"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"/>
+
+    <!-- Layout para los botones fijos al final de la pantalla -->
+    <!--<LinearLayout
+        android:id="@+id/buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <Button
+            android:id="@+id/btnAddProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Agregar Producto"
+            android:fontFamily="@font/inter_semibold"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:background="@drawable/round_btn_green" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_btn_green"
+            android:backgroundTint="@color/gray"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Cerrar Sesión"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+    </LinearLayout>-->
+</RelativeLayout>

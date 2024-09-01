@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.AuthActivity"
+    android:background="@color/white">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
+
+    <TextView
+        android:id="@+id/textViewInfo"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/inter_black"
+        android:text="Registro" />
+
+    <TextView
+        android:id="@+id/textViewRegistro"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Por favor, rellena los siguientes campos de datos para completar el registro:"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Email"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
+        android:inputType="textEmailAddress"
+        android:drawableStart="@drawable/baseline_person_24"/>
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
+        android:inputType="textPassword"
+        android:drawableStart="@drawable/baseline_lock_24"/>
+
+    <EditText
+        android:id="@+id/txtConfirmPassword"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableStart="@drawable/baseline_lock_24"
+        android:ems="10"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
+        android:hint="Confirmar contraseña"
+        android:inputType="textPassword" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnSingin"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="Registrar"
+            android:textAllCaps="false"
+            android:fontFamily="@font/inter_semibold"
+            android:background="@drawable/round_btn_green"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/round_btn_gray"
+            android:text="Volver"
+            android:fontFamily="@font/inter_semibold"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>

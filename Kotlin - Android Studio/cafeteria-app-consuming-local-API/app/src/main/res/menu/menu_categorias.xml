@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/todos"
+        android:title="Todo"/>
+    <item
+        android:id="@+id/bebidas_calientes"
+        android:title="Bebidas Calientes"/>
+    <item
+        android:id="@+id/bebidas_frias"
+        android:title="Bebidas Frías"/>
+    <item
+        android:id="@+id/snacks"
+        android:title="Snacks"/>
+    <item
+        android:id="@+id/postres"
+        android:title="Postres"/>
+</menu>

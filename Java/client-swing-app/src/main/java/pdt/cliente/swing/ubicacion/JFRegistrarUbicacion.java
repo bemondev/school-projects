@@ -1,0 +1,329 @@
+package pdt.cliente.swing.ubicacion;
+
+import cfc.servidor.DTOs.UbicacionDTO;
+import cfc.servidor.enumerados.EstadosEnum;
+import cfc.servidor.enumerados.InstitucionesEnum;
+import cfc.servidor.enumerados.SectoresEnum;
+import cfc.servidor.exepciones.EntityException;
+import pdt.cliente.Conexion;
+import pdt.cliente.swing.JFDashboard;
+
+import javax.swing.*;
+
+/**
+ * Clase que representa la ventana de registro de ubicaciones.
+ */
+public class JFRegistrarUbicacion extends javax.swing.JFrame {
+
+    // ======================== Atributos ========================
+
+    /**
+     * Instancia única de la clase (patrón Singleton).
+     */
+    private static JFRegistrarUbicacion instancia;
+
+
+    // ============================= Constructor =============================
+
+    /**
+     * Constructor de la clase.<br>
+     * Inicializa los componentes de la ventana.
+     */
+    private JFRegistrarUbicacion() {
+        this.initComponents();
+        this.cargarComboBoxes();
+    }
+
+    // =============================== Métodos ===============================
+
+    /**
+     * Devuelve la instancia única de la clase (patrón Singleton).
+     *
+     * @return Instancia única de la clase.
+     */
+    public static JFRegistrarUbicacion getInstancia() {
+        if (instancia == null) {
+            instancia = new JFRegistrarUbicacion();
+        }
+        return instancia;
+    }
+
+    /**
+     * Método que carga los ComboBox (Institución y Sector).
+     */
+    public void cargarComboBoxes() {
+        // Limpia los ComboBox
+        this.cbxInstitucion.removeAllItems();
+        this.cbxSector.removeAllItems();
+
+        // Carga las Instituciones
+        for (InstitucionesEnum institucion : InstitucionesEnum.values()) {
+            this.cbxInstitucion.addItem(institucion.toString());
+        }
+
+        // Carga los Sectores
+        for (SectoresEnum sector : SectoresEnum.values()) {
+            this.cbxSector.addItem(sector.toString());
+        }
+    }
+
+    // =============================== Eventos ===============================
+
+    /**
+     * Método que se ejecuta al presionar el botón de Cancelar.<br>
+     * Oculta la ventana actual y muestra la ventana de Dashboard.
+     *
+     * @param evt Evento de acción.
+     */
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        JOptionPane opcion = new JOptionPane();
+        opcion.setOptions(new Object[] {"Confirmar", "Cancelar"});
+        int respuesta = opcion.showConfirmDialog(this, "Confirmar esta acción?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        if (respuesta == JOptionPane.YES_OPTION) {
+            setVisible(false);
+            JFDashboard.getInstancia().setVisible(true);
+        }
+
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    /**
+     * Método que se ejecuta al presionar el botón de Registrar.<br>
+     * Registra una nueva ubicación con los datos ingresados.
+     *
+     * @param evt Evento de acción.
+     */
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+
+        String nombre = this.txtNombre.getText();
+
+        if (nombre.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un nombre");
+            return;
+        }
+        JOptionPane opcion = new JOptionPane();
+        opcion.setOptions(new Object[] {"Confirmar", "Cancelar"});
+        int respuesta = opcion.showConfirmDialog(this, "Confirmar esta acción?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        if (respuesta == JOptionPane.YES_OPTION) {
+            try {
+                UbicacionDTO ubicacion = new UbicacionDTO();
+                ubicacion.setNombre(nombre);
+                ubicacion.setInstitucion(InstitucionesEnum.valueOf((String) this.cbxInstitucion.getSelectedItem()));
+                ubicacion.setSector(SectoresEnum.valueOf((String) this.cbxSector.getSelectedItem()));
+                ubicacion.setPiso(this.txtPiso.getText());
+                ubicacion.setCama(this.txtCama.getText());
+                ubicacion.setNumero(Integer.parseInt(txtNumero.getText()));
+
+
+                ubicacion.setEstado(EstadosEnum.ACTIVO);
+
+                Conexion.rec_ubicacion.registrar(ubicacion);
+
+                JOptionPane.showMessageDialog(this, "Ubicación creada correctamente.");
+            } catch (EntityException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+            }catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Error en el registro");
+                ex.printStackTrace(System.out);
+            }
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    // ================================= UI ==================================
+
+    /*
+     * Método controlado por el editor de formularios, encargado
+     * de inicializar y estructurar los elementos del formulario.
+     */
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("all")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        javax.swing.JPanel background = new javax.swing.JPanel();
+        javax.swing.JLabel lblFichaUbicacion = new javax.swing.JLabel();
+        javax.swing.JButton btnRegistrar = new javax.swing.JButton();
+        javax.swing.JButton btnCancelar = new javax.swing.JButton();
+        javax.swing.JLabel lblNombre = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        javax.swing.JLabel lblNumero = new javax.swing.JLabel();
+        javax.swing.JLabel lblInstitucion = new javax.swing.JLabel();
+        javax.swing.JLabel lblSector = new javax.swing.JLabel();
+        txtPiso = new javax.swing.JTextField();
+        javax.swing.JLabel lblPiso = new javax.swing.JLabel();
+        txtNumero = new javax.swing.JTextField();
+        txtCama = new javax.swing.JTextField();
+        javax.swing.JLabel lblCama = new javax.swing.JLabel();
+        cbxInstitucion = new javax.swing.JComboBox<>();
+        cbxSector = new javax.swing.JComboBox<>();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        background.setBackground(new java.awt.Color(217, 217, 217));
+
+        lblFichaUbicacion.setFont(new java.awt.Font("Unispace", 0, 24)); // NOI18N
+        lblFichaUbicacion.setText("Registrar Ubicación");
+
+        btnRegistrar.setBackground(new java.awt.Color(38, 34, 249));
+        btnRegistrar.setFont(new java.awt.Font("Unispace", 0, 18)); // NOI18N
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setBackground(new java.awt.Color(132, 132, 132));
+        btnCancelar.setFont(new java.awt.Font("Unispace", 0, 18)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNombre.setText("Nombre");
+
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        lblNumero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNumero.setText("Numero");
+
+        lblInstitucion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblInstitucion.setText("Institucion");
+
+        lblSector.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSector.setText("Sector");
+
+        txtPiso.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        lblPiso.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPiso.setText("Piso");
+
+        txtNumero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        txtCama.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        lblCama.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCama.setText("Cama");
+
+        cbxInstitucion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
+
+        cbxSector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
+
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+                backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(backgroundLayout.createSequentialGroup()
+                                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(lblInstitucion)
+                                                        .addComponent(lblSector)
+                                                        .addComponent(lblPiso)
+                                                        .addComponent(lblNumero)
+                                                        .addComponent(lblCama))
+                                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(backgroundLayout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(txtPiso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                                                                        .addComponent(txtNumero, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(txtCama, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                                        .addGroup(backgroundLayout.createSequentialGroup()
+                                                                .addGap(168, 168, 168)
+                                                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(cbxSector, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(cbxInstitucion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                        .addGroup(backgroundLayout.createSequentialGroup()
+                                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(backgroundLayout.createSequentialGroup()
+                                                .addComponent(lblNombre)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(14, 14, 14))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblFichaUbicacion)
+                                .addGap(157, 157, 157))
+        );
+        backgroundLayout.setVerticalGroup(
+                backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(backgroundLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(lblFichaUbicacion)
+                                .addGap(27, 27, 27)
+                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblNombre))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblInstitucion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cbxInstitucion))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblSector)
+                                        .addGroup(backgroundLayout.createSequentialGroup()
+                                                .addGap(4, 4, 4)
+                                                .addComponent(cbxSector, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblNumero))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtPiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblPiso))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtCama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblCama))
+                                .addGap(37, 37, 37)
+                                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    // Variables de los componentes manejados por el editor de formularios.
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbxInstitucion;
+    private javax.swing.JComboBox<String> cbxSector;
+    private javax.swing.JTextField txtCama;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtPiso;
+    // End of variables declaration//GEN-END:variables
+}

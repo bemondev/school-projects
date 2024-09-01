@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario para editar eventos</title>
+    <link rel="stylesheet" href="styles/edit.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <div class="container-form">
+        <form id="edit-form">
+            <div class="form-group">
+                <label for="nombre">Nombre del Evento:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+            <div class="form-group">
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora" name="hora" required>
+            </div>
+            <div class="form-group">
+                <label for="lugar">Lugar:</label>
+                <select id="lugar" name="lugar" required>
+                    <option value="">Seleccione una ciudad</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn-submit">Guardar cambios</button>
+            </div>
+            <div class="form-group">
+                <button class="btn-back" onclick="volverIndex()">Volver</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="scripts/edit-event.js"></script>
+</body>
+</html>
