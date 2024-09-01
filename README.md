@@ -2,10 +2,10 @@
 Hi, my name is Bernardo and I'm an IT student from Uruguay. Welcome to my repository.
 
 ## What is this?
-This is a little portfolio I made compiling some of the works I've been doing throught my degree in IT. 
+This is a little portfolio I made compiling some of the works I've been doing throught my degree in IT. I've been dabbling into a couple areas of IT for the last couple years: Front and Backend development, Testing, Databases, Infrastructure and Cloud. So naturally I wanted to publish some of this :)
 
 ## Why?
-It's an easy way to show and share some of the stuff I've been learning and implementing. I've been dabbling into a couple areas of IT for the last couple years: Front and Backend development, Testing, Databases, Infrastructure and Cloud.
+It's an easy way to show and share some of the stuff I've been learning and implementing. 
 
 # Sections
 This project is divided into different folders, each being a different programming language / area. If you see a title with kebab-case that mean's it's a project ready to launch.
